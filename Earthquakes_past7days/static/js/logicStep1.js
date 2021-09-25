@@ -20,13 +20,13 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark
 // Create a base layer that holds both maps.
 let baseMaps = {
   "Streets": streets,
-  "Satellite Streets": satelliteStreets
+  "Satellite": satelliteStreets
 };
 // Create the map object with center and zoom level.
 let map = L.map('mapid', {
-    center: [43.7, -79.3],
-    zoom:11,
-    layers: [satelliteStreets]
+    center: [39.5, -98.5],
+    zoom:3,
+    layers: [streets]
 });
 
 // Pass our map layers into our layers control and add the layers control to the map.
@@ -41,7 +41,7 @@ let torontoHoods = "https://raw.githubusercontent.com/sking21121/Mapping_Earthqu
 
 
 // Grabbing our GeoJSON data.
-d3.json(torontoHoods).then(function(data) {
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
     console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
   L.geoJson(data).addTo(map);
